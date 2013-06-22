@@ -131,7 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-	'bootstrapform',
+	  'bootstrapform',
     'axes',
     'south',
     # Uncomment the next line to enable admin documentation:
@@ -148,12 +148,12 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
-	'formatters': {
-		'standard': {
-			'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-			'datafmt': "%d/%b/%Y %H:%M:%S",
-		},
-	},
+	  'formatters': {
+		  'standard': {
+			  'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+			  'datafmt': "%d/%b/%Y %H:%M:%S",
+		   },
+	   },
     'handlers': {
         'null': {
             'level': 'DEBUG',
@@ -162,7 +162,7 @@ LOGGING = {
 		'logfile': {
 			'level': 'DEBUG',
 			'class': 'logging.handlers.RotatingFileHandler',
-			'filename': os.path.join(ROOT_PATH, 'logfile'),
+			'filename': os.path.join(ROOT_PATH, 'project.log'),
 			'maxBytes': 50000,
 			'backupCount': 2,
 			'formatter': 'standard',
