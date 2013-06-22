@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Moduł zarządzania alarmem - historia{% endblock %}
+
+{% block sub-nav %}
+{% include 'alarm/menu.html' %}
+{% endblock %}
+
+{% block content %}
+<h2>Zarządzanie alarmem - Historia</h2>
+<table class="table table-bordered table-hover">
+<thead>
+  <tr>
+    <th>l.p</th><th>Data</th><th>Sensor/Klawiatura</th><th>Stan</th>
+  </tr>
+</thead>
+<tbody>
+  {% for event in list %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ event.date }}</td>
+      {% if event.sensor %}
+        <td>{{ event.sensor }}</td>
+      {% else %}
+        <td>{{ event.keyboard }}</td>
+      {% endif %}
+      <td>{{ event.get_state_display }}</td>
+    </tr>
+  {% endfor %}
+</tbody>
+</table>
+{% endblock %}

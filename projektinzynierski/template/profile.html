@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block content %}
+
+<p>Profil uzytkownika {{ user.username }} ({{ user.first_name }} {{ user.last_name }})</p>
+<p>Ostatnie logowanie: {{ user.last_login }}</p>
+{% if changepassword_form %}
+<form method="post" action="#">
+{% csrf_token %}
+Formularz zmiany hasla:
+{{ changepassword_form|bootstrap }}
+<button type="submit" class="btn" >Zmien haslo</button>
+</form>
+{% else %}
+<p>{{ changepassword_info }}</p>
+{% endif %}
+
+Formularz zmiany danych
+<form method="post" action="#">
+{% csrf_token %}
+<button type="submit" class="btn" >Zmien dane</button>
+</form>
+{% endblock %}

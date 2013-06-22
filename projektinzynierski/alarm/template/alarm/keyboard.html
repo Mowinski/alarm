@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %}Moduł zarządzania alarmem - zarządzanie klawiaturą{% endblock %}
+
+{% block sub-nav %}
+{% include 'alarm/menu.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="span12">
+    <h3>Lista klawiatur</h3>
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th>l.p</th><th>Położenie czujnika</th><th>Port</th><th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for keyboard in keyboard_list %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ keyboard.name }}</td>
+            <td>{{ keyboard.port }}</td>
+            {% if perms.alarm.delete_keyboard %}
+              <td><a href="{% url 'alarm_keyboard' keyboard_id=keyboard.id action='D' %}">Skasuj</a></td>
+            {% else %}
+              <td></td>
+            {% endif %}
+            {% if perms.alarm.change_keyboard %}
+              <td><a href="{% url 'alarm_keyboard' keyboard_id=keyboard.id action='E' %}">Edytuj</a></td>
+            {% else %}
+              <td></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if perms.alarm.add_keyboard %}
+  <hr>
+  <div class="row">
+    <div class="span4">
+      <h3>Formularz dodania nowej klawiatury</h3>
+      <form method="POST" action="">
+        {% csrf_token %}
+        {{ keyboard_form|bootstrap }}
+        <button type="submit" class="btn">Zatwierdz</button>
+      </form>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %}Moduł zarządzania alarmem - dodaj sensor{% endblock %}
+
+{% block sub-nav %}
+{% include 'alarm/menu.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="span12">
+    <h3>Lista czujników</h3>
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th>l.p</th><th>Położenie czujnika</th><th>Opis</th><th>Port</th><th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sensor in sensor_list %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ sensor.place }}</td>
+            <td>{{ sensor.desc }}</td>
+            <td>{{ sensor.port }}</td>
+            {% if perms.alarm.delete_sensor %}
+              <td><a href="{% url 'alarm_sensor' sensor_id=sensor.id action='D' %}">Skasuj</a></td>
+            {% else %}
+              <td></td>
+            {% endif %}
+            {% if perms.alarm.change_sensor %}
+              <td><a href="{% url 'alarm_sensor' sensor_id=sensor.id action='E' %}">Edytuj</a></td>
+            {% else %}
+              <td></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if perms.alarm.add_sensor %}
+  <hr>
+  <div class="row">
+    <div class="span4">
+      <h3>Formularz dodania nowego czujnika</h3>
+      <form method="POST" action="">
+        {% csrf_token %}
+        {{ sensor_form|bootstrap }}
+        <button type="submit" class="btn">Dodaj nowy czujnik</button>
+      </form>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

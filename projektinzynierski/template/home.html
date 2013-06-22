@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block title %}Strona glowna{% endblock %}
+
+
+{% block sub-nav %}
+{% if user.is_authenticated %}
+  <li><a href="#">Profil</a></li>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+Home page<br />
+{% if user.is_authenticated %}
+Witaj w systemie zarządzania inteligentnym domem.
+{% else %}
+Dostep jedynie dla zalogowanych uzytkownikow
+{% endif %}
+{% endblock %}

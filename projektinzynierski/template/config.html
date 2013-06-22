@@ -1,0 +1,11 @@
+{% load bootstrap %}
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+Blok konfiguracyjny.
+<form method="post" action="#">
+{{ config_form|bootstrap }}
+</form>
+{% endblock %}
