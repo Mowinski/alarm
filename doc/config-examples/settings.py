@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Kamil Mowinski', 'kamil.mowinski@pwr.wroc.pl'),
+    ('', ''),
 )
 
 MANAGERS = ADMINS
@@ -13,8 +13,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'alarm',
-        'USER': 'alarmuser',
-        'PASSWORD': 'CREpr4S+=s',
+        'USER': 'user',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -131,7 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-	  'bootstrapform',
+	'bootstrapform',
     'axes',
     'south',
     # Uncomment the next line to enable admin documentation:
