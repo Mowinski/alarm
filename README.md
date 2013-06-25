@@ -1,2 +1,4 @@
-Modułowy system zarządzania inteligentnym domem na podstawie alarmu
+Modulowy system zarzadzania inteligentnym domem na podstawie alarmu
 =====
+
+Galaz developerska
